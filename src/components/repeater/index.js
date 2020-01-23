@@ -75,6 +75,7 @@ const SortableItem = SortableElement((props) => {
 				/>
 				<ReactQuill 
 			  		name="tagline" 
+			  		placeholder='Add your tagline...'
 			  		value={props.child.content.tagline}
 			  		onChange={(value)=>props.onItemChange(value, props, 'tagline')} 
 			  		modules={props.modules}
@@ -193,12 +194,6 @@ export default class Repeater extends React.Component {
   	render() {
 	    return (
 		    <>
-			    <FormLabel
-				  htmlFor="sortableList"
-				  required={false}
-				>
-				 {this.props.title}
-				 </FormLabel>
 			    <SortableList 
 			    	id="sortableList"
 				    items={this.props.items} 
@@ -209,7 +204,7 @@ export default class Repeater extends React.Component {
 				    onRemove = {this.handleRemove}
 				    modules = {this.modules}
 				    icons={icons}
-				    		    /> 
+    		    /> 
 				<Button
 			      buttonType="muted" 
 			      isFullWidth={true} 
