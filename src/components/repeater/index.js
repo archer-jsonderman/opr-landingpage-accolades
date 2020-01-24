@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {SortableContainer, SortableElement, SortableHandle} from 'react-sortable-hoc';
 import update from 'immutability-helper';
 import arrayMove from 'array-move';
-import ReactQuill from 'react-quill';
+import ReactQuill,{Quill} from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import {
 	CardDragHandle,
@@ -16,8 +16,14 @@ import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.base-theme.reac
 import '@fonticonpicker/react-fonticonpicker/dist/fonticonpicker.material-theme.react.css';
 import './index.scss'; 
 
+let Block = Quill.import('blots/block');
+class BaseBlot extends Block{ }
+BaseBlot.blotName = 'block';
+BaseBlot.tagName = 'f';
+Quill.register('blots/block', BaseBlot);
 //can this be passed or generated from parcel svgr
 const icons = [
+	
 		  	'symbol-defs_svg__icon-no-gre',
 		  	'symbol-defs_svg__icon-affordable-costs',
 		  	'symbol-defs_svg__icon-no-fees',
